@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <title>Gerador HTML table JSON</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Gerador de HTML TABLE com base em JSON">
+        <meta name="keywords" content="HTML, TABLE, JavaScript, JSON">
+        <meta name="authot" content="Emerson Costa Santos">
+
+        <!-- Modo Mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link href="table.png" rel="icon">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
+
+        <!-- Biblioteca de ícones -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- CSS -->
+        <!-- <link rel="stylesheet" href="css/Geral.css"> -->
+
+        <!-- JavaScript -->
+        <!-- <script src="JS/Geral.js"></script> -->
+        <script src="gerarTable.js"></script>
+    </head>
+
+    <body>
+        <div class='container'>
+
+            <main>
+                <section class='col-12 mt-2'>
+
+                    <h1 class="text-center mt-2">Gerador de tabela em HTML com base em um JSON</h1>
+                    
+                    <div class="col-12 text-center mt-3">   
+
+                        <header>
+                            <h2>Gerar Tabela</h2>
+                        </header>
+
+                        <p class="h4">
+                            Insira um JSON válido abaixo para gerar uma tabela responsiva em HTML utilizando bootstrap. É aceito apenas JSON simples, clique no botão de exemplo para ver um.
+                        </p>
+
+                        <p class="h5 mt-3">
+                            Os nomes das colunas serão os nomes dos campos que estirem no JSON. Os elementos serão adicionados na arvore DOM.
+                        </p>
+
+                        <textarea id='JSON' class="form-control mt-4" rows="12" cols=""></textarea>
+
+                        <div class="form-group row d-flex justify-content-center">
+                            <input type="button" class="btn btn-primary btn-lg mt-4" Value='Gerar Tabela' onclick="gerarTable()" data-placement="top" data-toggle="tooltip" title="Gerar Tabela">
+                            <input type="button" class="btn btn-secondary btn-lg mt-4 ml-4" Value='Ver Exemplo' onclick="exemplo()" data-placement="top" data-toggle="tooltip" title="Ver Exemplo">
+                        </div>
+
+                        <div class='container mt-3'> 
+                            <div class='row-fluid'>
+                                <div class='col-xs-6'>
+                                    <div id='table' class='table-responsive'>
+                                        <table> </table>       
+    
+                        </div>                        
+
+                    </div>
+                        
+
+                </section>
+            </main>          
+
+            <footer class="container mt-5">
+                <div class='row'>
+                    <div class="col-12">
+                    <details class="text-center">
+                        <summary>Gerador de tabela em HTML com base em um <mark>JSON</mark></summary>
+                        <p>GitHub do projeto: <a href="#">GGGG</a></p>
+                    </details>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
