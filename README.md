@@ -3,3 +3,6 @@ Com base num JSON simples Renderizar uma tabela, geralmente com objetivo de util
 
 ## Exemplo
 ![Exemplo](https://github.com/emerson-cs-santos/TableDOMRender/blob/master/Exemplo.png "Exemplo")
+
+## Site está online
+[Loja](https://table-render-json.netlify.app/)
