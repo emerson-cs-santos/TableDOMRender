@@ -8,13 +8,23 @@ function gerarTable()
 {
     const JSONtexto = document.getElementById('JSON').value;
 
+    let resposta = '';
+    
+    try
+    {
+        resposta = JSON.parse(JSONtexto);
+    }
+    catch (e)
+    {
+        alert('JSON inválido!');
+        return false;
+    }
+
     if ( JSONtexto.length === 0)
     {
         alert('Campo do JSON está vazio!');
         return false;
     }
-    
-    const resposta = JSON.parse(JSONtexto);
 
     // Div onde a tabela é removida e criada novamente
     var div_table = document.getElementById('table');
@@ -109,6 +119,11 @@ function gerarTable()
                 // }
 
                 var valor_linha = resposta[ncount_linha][value];
+
+                if ( typeof valor_linha === 'object' && valor_linha !== null )
+                {
+                    return;
+                }
 
                 // Se precisar utilizar alguma informação, como o ID em botões
                 // if (value == 'Codigo')
