@@ -1,7 +1,26 @@
+function mostrarColunas() 
+{
+    const ignorarColunas = document.getElementById('IgnorarColunas');
+
+    if ( ignorarColunas.className == 'ignorarColunas' )
+    {
+        ignorarColunas.className = 'mostrarColunas';
+    }
+    else
+    {
+        ignorarColunas.className = 'ignorarColunas';
+    }
+}
+
 function exemplo() 
 {
-    document.getElementById('JSON').value = '[  { "Cor":"red", "Valor":"#f00" }, { "Cor":"green", "Valor":"#0f0" }, { "Cor":"blue", "Valor":"#00f" } ]';
+    document.getElementById('JSON').value = '[  { "Cor":"Vermelho", "Tamanho":"P", "Tipo":"Primeira temporada" }, { "Cor":"Verde", "Tamanho":"M", "Tipo":"Segunda temporada"}, { "Cor":"Azul", "Tamanho":"G", "Tipo":"Outlet" } ]';
     gerarTable();
+}
+
+function exemploNaoExibirColunas() 
+{
+    document.getElementById('JSONcolunasIgnorar').value = '[ { "Coluna1": "Tipo", "Coluna2": "Tamanho" } ]';
 }
 
 function gerarTable() 
@@ -26,8 +45,27 @@ function gerarTable()
         return false;
     }
 
+
+    const JSONcolunasIgnorarTexto = document.getElementById('JSONcolunasIgnorar').value;
+
+    let JSONcolunasIgnorar = '';
+
+    if ( JSONcolunasIgnorarTexto.length > 0 )
+    {
+       
+        try
+        {
+            JSONcolunasIgnorar = JSON.parse(JSONcolunasIgnorarTexto);
+        }
+        catch (e)
+        {
+            alert('JSON das colunas ignoradas está inválido!');
+            return false;
+        }
+    }
+
     // Div onde a tabela é removida e criada novamente
-    var div_table = document.getElementById('table');
+    const div_table = document.getElementById('table');
 
     // Remover tabela atual - Sempre haverá uma tabela como primeiro filho, mesmo que não retorne resultados do php, ao menos a tag TABLE será criada.
     var table_remover = div_table.firstElementChild;
@@ -69,6 +107,35 @@ function gerarTable()
             // {
             //     return;
             // }
+
+            let exit = false;
+
+            if ( JSONcolunasIgnorarTexto.length > 0 )
+            {
+                
+                for (var ncount_linha = 0; ncount_linha < Object.keys(JSONcolunasIgnorar).length; ncount_linha ++) 
+                {
+                    Object.keys(JSONcolunasIgnorar[ncount_linha]).forEach
+                    (
+                        function(value) 
+                        {
+                            let colunaIgnorar = JSONcolunasIgnorar[ncount_linha][value];
+                            
+                            if( colunaIgnorar  === valor_coluna ) 
+                            {
+                                exit = true;
+                                return;
+                            }                                
+                        }
+                    )
+                }
+                
+            }
+
+            if ( exit )
+            {
+               return;
+            }
                 
             // CRIA COLUNA
             var thfor = document.createElement('th');   
@@ -124,6 +191,37 @@ function gerarTable()
                 {
                     return;
                 }
+                
+
+                let exit = false;
+                let valor_coluna = value
+
+                if ( JSONcolunasIgnorarTexto.length > 0 )
+                {
+                    
+                    for (var n_linha = 0; n_linha < Object.keys(JSONcolunasIgnorar).length; n_linha ++) 
+                    {
+                        Object.keys(JSONcolunasIgnorar[n_linha]).forEach
+                        (
+                            function(valueIgnorar) 
+                            {
+                                let colunaIgnorar = JSONcolunasIgnorar[n_linha][valueIgnorar];
+                                
+                                if( colunaIgnorar  === valor_coluna ) 
+                                {
+                                    exit = true;
+                                    return;
+                                }                                
+                            }
+                        )
+                    }
+                    
+                }
+    
+                if ( exit )
+                {
+                   return;
+                }                
 
                 // Se precisar utilizar alguma informação, como o ID em botões
                 // if (value == 'Codigo')
