@@ -2,13 +2,41 @@ function mostrarColunas()
 {
     const ignorarColunas = document.getElementById('IgnorarColunas');
 
-    if ( ignorarColunas.className == 'ignorarColunas' )
+    if ( ignorarColunas.className == 'naoMostrar' )
     {
-        ignorarColunas.className = 'mostrarColunas';
+        ignorarColunas.className = 'Mostrar';
     }
     else
     {
-        ignorarColunas.className = 'ignorarColunas';
+        ignorarColunas.className = 'naoMostrar';
+    }
+}
+
+function mostrarCSS() 
+{
+    const addCSS = document.getElementById('addCSS');
+
+    if ( addCSS.className == 'naoMostrar' )
+    {
+        addCSS.className = 'Mostrar';
+    }
+    else
+    {
+        addCSS.className = 'naoMostrar';
+    } 
+}
+
+function mostrarElementos() 
+{
+    const addElemento = document.getElementById('addElemento');
+
+    if ( addElemento.className == 'naoMostrar' )
+    {
+        addElemento.className = 'Mostrar';
+    }
+    else
+    {
+        addElemento.className = 'naoMostrar';
     }
 }
 
@@ -20,7 +48,22 @@ function exemplo()
 
 function exemploNaoExibirColunas() 
 {
-    document.getElementById('JSONcolunasIgnorar').value = '[ { "Coluna1": "Tipo", "Coluna2": "Tamanho" } ]';
+    document.getElementById('JSONCSSaddColuna').value = '[ { "Coluna1": "Tipo", "Coluna2": "Tamanho" } ]';
+}
+
+function exemploAddCSSColuna() 
+{
+    document.getElementById('JSONCSSaddColuna').value = '[ { "Classe1": "ExemploColuna1", "Classe2": "ExemploColuna2" } ]';
+}
+
+function exemploAddCSSLinha() 
+{
+    document.getElementById('JSONCSSaddLinha').value = '[ { "Classe1": "ExemploLinha1", "Classe2": "ExemploLinha2" } ]';
+}
+
+function exemploAddElemento() 
+{
+    document.getElementById('JSONCSSaddLinha').value = '[ { "Classe1": "ExemploLinha1", "Classe2": "ExemploLinha2" } ]';
 }
 
 function gerarTable() 
@@ -102,12 +145,6 @@ function gerarTable()
             {
             var valor_coluna = key;
 
-            // Coluna de Tipo não é exibida na grade
-            // if (valor_coluna == 'tipo')
-            // {
-            //     return;
-            // }
-
             let exit = false;
 
             if ( JSONcolunasIgnorarTexto.length > 0 )
@@ -179,12 +216,6 @@ function gerarTable()
         Object.keys(resposta[ncount_linha]).forEach
             (function(value) 
             {
-                // Se precisar não exibir alguma coluna
-                // if (value == '')
-                // {
-                //     return;
-                // }
-
                 var valor_linha = resposta[ncount_linha][value];
 
                 if ( typeof valor_linha === 'object' && valor_linha !== null )
@@ -324,8 +355,7 @@ function gerarTable()
         
         // tdInativar.appendChild(ancoraInativar);
 
-        // trfor.appendChild(tdInativar);                
-
+        // trfor.appendChild(tdInativar);
 
     }
 

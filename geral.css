@@ -1,9 +1,29 @@
-.ignorarColunas
+.naoMostrar
 {
     display: none;
 }
 
-.mostrarColunas
+.Mostrar
 {
     display: block;
+}
+
+.ExemploColuna1
+{
+    color: blue;
+}
+
+.ExemploColuna2
+{
+    font-weight: bolder;
+}
+
+.ExemploLinha1
+{
+    background-color: coral;
+}
+
+.ExemploLinha2
+{
+    text-decoration: line-through;
 }
